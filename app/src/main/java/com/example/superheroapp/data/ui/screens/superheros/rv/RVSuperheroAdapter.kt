@@ -1,4 +1,4 @@
-package com.example.futuramaapi.ui.screens.characters.rv
+package com.example.superheroapp.data.ui.screens.superheros.rv
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
