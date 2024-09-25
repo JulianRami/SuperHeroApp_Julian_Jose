@@ -45,7 +45,6 @@ dependencies {
     implementation(libs.hilt.android)
     implementation(libs.filament.android)
     kapt(libs.hilt.android.compiler)
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -56,9 +55,7 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
-
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
-
     implementation(libs.glide)
 
 }

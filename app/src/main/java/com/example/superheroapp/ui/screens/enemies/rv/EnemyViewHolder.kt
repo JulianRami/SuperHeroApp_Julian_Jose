@@ -14,5 +14,4 @@ class EnemyViewHolder(
             ivImageEnemy.setImageResource(enemy.photo)
         }
     }
-
 }
