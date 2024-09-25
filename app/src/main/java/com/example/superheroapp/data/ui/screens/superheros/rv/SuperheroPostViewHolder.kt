@@ -26,7 +26,7 @@ class SuperheroPostViewHolder(
             tvCharacterGender.text =
                 tvCharacterGender.context.getString(R.string.character_gender, superhero.name)
 
-            //superhero.photo?.let { ivCharacterPicture.loadCircleImage(it) }
+            superhero.photo?.let { ivCharacterPicture.setImageResource(it) }
 
         }
     }
