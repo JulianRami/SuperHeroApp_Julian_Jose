@@ -19,7 +19,7 @@
             android:name=".ui.screens.enemies.Enemies"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".data.ui.screens.superheros.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Super Hero App</string>
+    <string name="superhero_name_with_position">#%1$d - %2$s</string>
+    <string name="superhero_alter_name">Alter name: %1$s</string>
+    <string name="superhero_enemy">Main enemy: %1$s</string>
+    <string name="superhero_locations">Location: %1$s</string>
+    <string name="superhero_powers">Powers: %1$s</string>
+    <string name="view_enemies">View Enemies</string>
+    <string name="view_friends">View Friends</string>
 </resources>

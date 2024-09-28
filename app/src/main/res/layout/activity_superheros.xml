@@ -4,16 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
 
     <ProgressBar
-        android:id="@+id/pb_friends"
+        android:id="@+id/pb_superheros"
         style="?android:attr/progressBarStyle"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:indeterminate="true"
-        android:indeterminateTint="@color/black"
+        android:indeterminateTint="@color/blue"
         android:indeterminateTintMode="src_atop"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -25,7 +24,7 @@
         tools:visibility="visible" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_friends"
+        android:id="@+id/rvSupeheros"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="invisible"
@@ -33,5 +32,4 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
