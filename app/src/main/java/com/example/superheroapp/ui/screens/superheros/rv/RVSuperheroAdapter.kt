@@ -1,14 +1,16 @@
-package com.example.superheroapp.data.ui.screens.superheros.rv
+package com.example.superheroapp.ui.screens.superheros.rv
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.superheroapp.data.di.DataHelper
 import com.example.superheroapp.data.models.Superhero
 import com.example.superheroapp.databinding.SuperheroViewBinding
 
 class RVSuperheroAdapter(
     private val onViewInfoClickListener: (id: Int) -> Unit,
-    private val onViewInfoTwoClickListener: (id: Int) -> Unit
+    private val onViewInfoTwoClickListener: (id: Int) -> Unit,
+    private val dataHelper: DataHelper
 ): RecyclerView.Adapter<SuperheroPostViewHolder>() {
 
     var superheros = emptyList<Superhero>()
@@ -22,7 +24,8 @@ class RVSuperheroAdapter(
         return SuperheroPostViewHolder(
             binding = binding,
             onViewInfoClickListener = onViewInfoClickListener,
-            onViewInfoTwoClickListener = onViewInfoTwoClickListener
+            onViewInfoTwoClickListener = onViewInfoTwoClickListener,
+            dataHelper = dataHelper
         )
     }
 

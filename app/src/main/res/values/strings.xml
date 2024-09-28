@@ -7,4 +7,8 @@
     <string name="superhero_powers">Powers: %1$s</string>
     <string name="view_enemies">View Enemies</string>
     <string name="view_friends">View Friends</string>
+    <string name="principal_enemy">Principal Enemy</string>
+    <string name="id_enemy">Id: %1$s</string>
+    <string name="name_enemy">Name: %1$s</string>
+    <string name="enemies">Enemies</string>
 </resources>

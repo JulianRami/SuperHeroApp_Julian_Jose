@@ -7,18 +7,21 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.superheroapp.data.generateEnemies
 import com.example.superheroapp.data.viewmodel.EnemyViewModel
 import com.example.superheroapp.databinding.ActivityEnemiesBinding
 import com.example.superheroapp.ui.screens.enemies.rv.RVEnemyAdapter
 import kotlinx.coroutines.launch
 import android.view.View
-
+import com.example.superheroapp.data.di.DataHelper
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
+@AndroidEntryPoint
 class Enemies : AppCompatActivity() {
+    @Inject
+    lateinit var dataHelper: DataHelper
     private lateinit var rvEnemiesAdapter:  RVEnemyAdapter
     private lateinit var binding: ActivityEnemiesBinding
     private val enemiesViewModel: EnemyViewModel by viewModels()
-    private val enemiesList = generateEnemies()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityEnemiesBinding.inflate(layoutInflater)
@@ -41,15 +44,13 @@ class Enemies : AppCompatActivity() {
                     uiState.superhero?.let { hero ->
                         Log.e("---HeroIDenemies", "${hero.enemies}")
 
-                        val listEnemies = enemiesList.filter { enemy -> hero.enemies.contains(enemy.id) }
+                        val listEnemies = dataHelper.generateEnemies().filter { enemy -> hero.enemies.contains(enemy.id) }
                         Log.e("---enemies", "$listEnemies")
                         ivImageEnemy.setImageResource(hero.mainEnemy.photo)
                         tvEnemyName.text = hero.mainEnemy.name
                         rvEnemiesAdapter.enemies =listEnemies
                         rvEnemiesAdapter.notifyDataSetChanged()
                     }
-                    pbEnemyMain.visibility =
-                        if (uiState.isEnemyLoading) View.VISIBLE else View.INVISIBLE
                 }
             }
         }
