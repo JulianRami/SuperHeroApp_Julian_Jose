@@ -11,7 +11,8 @@ import com.example.superheroapp.databinding.SuperheroViewBinding
 
 class SuperheroPostViewHolder(
     private val binding: SuperheroViewBinding,
-    private val onViewInfoClickListener: (position: Int) -> Unit
+    private val onViewInfoClickListener: (position: Int) -> Unit,
+    private val onViewInfoTwoClickListener: (position: Int) -> Unit
 ): RecyclerView.ViewHolder(binding.root) {
     private val locationList = generateLocations()
     private val powerList = generatePowers()
@@ -21,6 +22,10 @@ class SuperheroPostViewHolder(
         with(binding) {
             btnFriends.setOnClickListener {
                 onViewInfoClickListener(superhero.id)
+            }
+
+            btnEnemies.setOnClickListener {
+                onViewInfoTwoClickListener(superhero.id)
             }
 
             tvSuperheroName.text = tvSuperheroName.context.getString(
