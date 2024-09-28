@@ -7,7 +7,8 @@ import com.example.superheroapp.data.models.Superhero
 import com.example.superheroapp.databinding.SuperheroViewBinding
 
 class RVSuperheroAdapter(
-    private val onViewInfoClickListener: (id: Int) -> Unit
+    private val onViewInfoClickListener: (id: Int) -> Unit,
+    private val onViewInfoTwoClickListener: (id: Int) -> Unit
 ): RecyclerView.Adapter<SuperheroPostViewHolder>() {
 
     var superheros = emptyList<Superhero>()
@@ -20,7 +21,8 @@ class RVSuperheroAdapter(
         )
         return SuperheroPostViewHolder(
             binding = binding,
-            onViewInfoClickListener = onViewInfoClickListener
+            onViewInfoClickListener = onViewInfoClickListener,
+            onViewInfoTwoClickListener = onViewInfoTwoClickListener
         )
     }
 
