@@ -1,4 +1,4 @@
-package com.example.superheroapp.data.ui.screens.superheros.uiState
+package com.example.superheroapp.ui.screens.superheros.uiState
 
 import com.example.superheroapp.data.models.Superhero
 

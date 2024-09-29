@@ -8,16 +8,19 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.superheroapp.data.generateSuperheroes
+import com.example.superheroapp.data.di.DataHelper
 import com.example.superheroapp.data.viewmodel.FriendViewModel
 import com.example.superheroapp.databinding.ActivityFriendsBinding
 import com.example.superheroapp.ui.screens.friends.rv.RVFriendAdapter
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-
-class Friends : AppCompatActivity() {
+import javax.inject.Inject
+@AndroidEntryPoint
+class Friends: AppCompatActivity() {
+    @Inject
+    lateinit var dataHelper: DataHelper
     private lateinit var rvFriendsAdapter: RVFriendAdapter
     private lateinit var binding: ActivityFriendsBinding
-    private val friendsList = generateSuperheroes()
     private val friendsViewModel: FriendViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,7 +44,7 @@ class Friends : AppCompatActivity() {
                 with(binding) {
                     uiState.superhero?.let { hero ->
                         Log.e("---HeroI", "${hero.friends}")
-                        val listFriends = friendsList.filter { enemy -> hero.friends.contains(enemy.id) }
+                        val listFriends = dataHelper.generateSuperheroes().filter { enemy -> hero.friends.contains(enemy.id) }
                         Log.e("---frend", "$listFriends")
 
                         rvFriendsAdapter.friends =listFriends

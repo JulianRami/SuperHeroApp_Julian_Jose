@@ -1,4 +1,4 @@
-package com.example.superheroapp.data.ui.screens.superheros
+package com.example.superheroapp.ui.screens.superheros
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -9,15 +9,21 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.superheroapp.data.ui.screens.superheros.rv.RVSuperheroAdapter
+import com.example.superheroapp.data.di.DataHelper
+import com.example.superheroapp.ui.screens.superheros.rv.RVSuperheroAdapter
 import com.example.superheroapp.data.viewmodel.SuperherosViewModel
 import com.example.superheroapp.databinding.ActivitySuperherosBinding
 import com.example.superheroapp.ui.screens.enemies.Enemies
 import com.example.superheroapp.ui.screens.friends.Friends
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
+
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-
+    @Inject
+    lateinit var dataHelper: DataHelper
     private val superherosViewModel: SuperherosViewModel by viewModels()
     private lateinit var binding: ActivitySuperherosBinding
     private lateinit var rvSuperheroAdapter: RVSuperheroAdapter
@@ -37,7 +43,8 @@ class MainActivity : AppCompatActivity() {
             },
             onViewInfoTwoClickListener = { superheroId ->
                 launchEnemiesActivity(superheroId)
-            }
+            },
+            dataHelper = dataHelper
         )
 
         binding.rvSupeheros.apply {
