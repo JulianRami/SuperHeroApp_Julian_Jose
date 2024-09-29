@@ -1,9 +1,8 @@
-package com.example.superheroapp.data.ui.screens.superheros.rv
+package com.example.superheroapp.ui.screens.superheros.rv
 
 import androidx.recyclerview.widget.RecyclerView
 import com.example.superheroapp.R
-import com.example.superheroapp.data.generateLocations
-import com.example.superheroapp.data.generatePowers
+import com.example.superheroapp.data.di.DataHelper
 import com.example.superheroapp.data.models.Location
 import com.example.superheroapp.data.models.Power
 import com.example.superheroapp.data.models.Superhero
@@ -11,10 +10,11 @@ import com.example.superheroapp.databinding.SuperheroViewBinding
 
 class SuperheroPostViewHolder(
     private val binding: SuperheroViewBinding,
-    private val onViewInfoClickListener: (position: Int) -> Unit
+    private val onViewInfoClickListener: (position: Int) -> Unit,
+    private val onViewInfoTwoClickListener: (position: Int) -> Unit,
+    private val dataHelper: DataHelper
 ): RecyclerView.ViewHolder(binding.root) {
-    private val locationList = generateLocations()
-    private val powerList = generatePowers()
+
 
 
     fun bind(superhero: Superhero) {
@@ -23,14 +23,18 @@ class SuperheroPostViewHolder(
                 onViewInfoClickListener(superhero.id)
             }
 
+            btnEnemies.setOnClickListener {
+                onViewInfoTwoClickListener(superhero.id)
+            }
+
             tvSuperheroName.text = tvSuperheroName.context.getString(
                 R.string.superhero_name_with_position,
                 superhero.id,
                 superhero.name
             )
 
-            val locations = locationList.filter { location ->  superhero.locations.contains(location.id)}
-            val powers = powerList.filter { power ->  superhero.powers.contains(power.id)}
+            val locations = dataHelper.generateLocations().filter { location ->  superhero.locations.contains(location.id)}
+            val powers = dataHelper.generatePowers().filter { power ->  superhero.powers.contains(power.id)}
 
 
             tvSuperheroAlterName.text =
